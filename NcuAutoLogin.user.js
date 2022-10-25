@@ -4,12 +4,12 @@
 // @namespace       ncu-auto-login
 // @match           *://*/srun_portal_pc
 // @grant           none
-// @version         1.0.0
+// @version         1.0.1
 // @author          Viki <i@viki.moe> (https://github.com/vikiboss)
 // @create          2022/10/25 07:11:45
 // @lastmodified    2022/10/25
-// @feedback-url    https://github.com/vikiboss/ncu-auto-login-scripts/issues
-// @github          https://github.com/vikiboss/ncu-auto-login-scripts
+// @feedback-url    https://github.com/vikiboss/ncu-auto-login-script/issues
+// @github          https://github.com/vikiboss/ncu-auto-login-script
 // @license         MIT
 // @description
 // ==/UserScript==
