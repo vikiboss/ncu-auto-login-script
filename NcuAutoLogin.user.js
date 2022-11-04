@@ -4,10 +4,10 @@
 // @namespace       ncu-auto-login
 // @match           *://*/srun_portal_*
 // @grant           none
-// @version         1.0.2
+// @version         1.1.0
 // @author          Viki <i@viki.moe> (https://github.com/vikiboss)
 // @create          2022/10/25 07:11:45
-// @lastmodified    2022/10/25
+// @lastmodified    2022/11/4
 // @feedback-url    https://github.com/vikiboss/ncu-auto-login-script/issues
 // @github          https://github.com/vikiboss/ncu-auto-login-script
 // @license         MIT
@@ -17,21 +17,37 @@
 const config = {
   type: '', // 账号类型：为空是教职工，@ncu 是校园网，@cmcc 是移动，@ndcard 是电信，@unicom 是联通
   username: '', // 账号
-  password: '', // 密码
+  password: '', // 密码，如果不想使用明文，可以使用 base64 密码，base64 密码可以在控制台执行 window.btoa("密码") 得到
+  isBase64: false, // 如果是 base64 密码请将 isBase64 字段改为 true
 };
 
+const KEY = 'srun_config';
+
 window.onload = function () {
+  if (!config.username || !config.password) {
+    try {
+      const _config = JSON.parse(localStorage.getItem(KEY) || '{}');
+      Object.assign(config, _config);
+    } catch (e) {
+      console.log(e);
+    }
+  } else {
+    localStorage.setItem(KEY, JSON.stringify(config));
+  }
+
   const userInput = document.querySelector('#username');
   const passInput = document.querySelector('#password');
   const domainSelect = document.querySelector('#domain');
   const loginButton = document.querySelector('#login');
 
-  userInput.value = config.username;
+  const list = [userInput, passInput, domainSelect, loginButton, config.username, config.password];
 
-  // 如果不想使用明文，可以使用 base64 密码 👇，base64 密码可以在控制台执行 window.btoa("密码") 得到
-  // passInput.value = window.atob(config.password);
-  passInput.value = config.password;
-  domainSelect.value = config.type;
+  if (list.some((e) => !e)) return;
+
+  const pwd = config.isBase64 ? window.atob(config.password) : config.password;
+
+  userInput.value = config.username;
+  passInput.value = pwd;
 
   loginButton.click();
 };
