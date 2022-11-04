@@ -2,9 +2,9 @@
 // @name            NCU Auto Login - 南昌大学校园网、深澜软件校园网自动登录
 // @description     南昌大学校园网自动登录，支持教工、校园网、移动、电信、联通
 // @namespace       ncu-auto-login
-// @match           *://*/srun_portal_pc
+// @match           *://*/srun_portal_*
 // @grant           none
-// @version         1.0.1
+// @version         1.0.2
 // @author          Viki <i@viki.moe> (https://github.com/vikiboss)
 // @create          2022/10/25 07:11:45
 // @lastmodified    2022/10/25
