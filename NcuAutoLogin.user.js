@@ -4,7 +4,7 @@
 // @namespace       ncu-auto-login
 // @match           *://*/srun_portal_*
 // @grant           none
-// @version         1.2.0
+// @version         1.2.1
 // @author          Viki <i@viki.moe> (https://github.com/vikiboss)
 // @create          2023/10/07 16:00:00
 // @lastmodified    2023/10/07
@@ -48,7 +48,7 @@ const KEY = 'srun_config'
 
     userInput.value = config.username
     passInput.value = pwd
-    passInput.type = config.type
+    passInput.value = config.type
 
     loginButton.click()
   })
